@@ -1,0 +1,14 @@
+# use docker just for experimenting
+version: "4.29"
+services:
+  vite-app: 
+    build: ./vite-app
+    container_name: vite-app-container
+    ports: 
+      - 3000:3000
+    volumes: 
+      - ./vite-app:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: npm run dev
