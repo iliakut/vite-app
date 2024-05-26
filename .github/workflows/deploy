@@ -4,10 +4,14 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  build:
+  deployment:
     runs-on: ubuntu-latest
+    environment: production
 
     steps:
     - name: Checkout repository
