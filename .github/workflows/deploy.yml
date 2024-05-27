@@ -38,7 +38,7 @@ jobs:
       run: docker-compose up --build -d
 
     - name: Run tests inside Docker
-      run: docker-compose exec -T app npm run test 
+      run: docker-compose exec -T vite-app npm run test 
 
     - name: Tag and push Docker image
       run: |
