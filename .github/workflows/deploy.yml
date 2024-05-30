@@ -66,8 +66,8 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-
+  
     - name: Tag and push Docker image
       run: |
-        docker tag vite-app-prod-container ${{ secrets.DOCKER_USERNAME }}/vite-app:latest
+        docker tag $(docker-compose -f docker-compose.prod.yml ps -q vite-app) ${{ secrets.DOCKER_USERNAME }}/vite-app:latest
         docker push ${{ secrets.DOCKER_USERNAME }}/vite-app:latest
