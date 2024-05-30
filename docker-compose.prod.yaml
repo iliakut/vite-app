@@ -1,0 +1,13 @@
+version: "2.27"
+services:
+  vite-app:
+    build:
+      context: ./vite-app
+      dockerfile: Dockerfile.prod
+    container_name: vite-app-prod-container
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=production
+      - VITE_API_URL=http://localhost:3000/
+    command: npm run serve
