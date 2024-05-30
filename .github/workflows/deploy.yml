@@ -32,7 +32,7 @@ jobs:
       run: docker-compose -f docker-compose.dev.yml build
       
     - name: Run tests inside Docker
-      run: docker-compose -f docker-compose.dev.yml run vite-app npm test:ci
+      run: docker-compose -f docker-compose.dev.yml run vite-app npm run test
 
     - name: Stop and remove test services
       run: docker-compose -f docker-compose.dev.yml down
