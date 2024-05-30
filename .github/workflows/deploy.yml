@@ -52,9 +52,6 @@ jobs:
         fi
         docker cp $CONTAINER_ID:/app/dist ./dist
 
-    - name: Stop and remove production services
-      run: docker-compose -f docker-compose.prod.yml down
-
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
@@ -69,6 +66,9 @@ jobs:
   
     - name: Tag and push Docker image
       run: |
-        IMAGE_ID=$(docker-compose -f docker-compose.prod.yml images -q vite-app)
+        IMAGE_ID=$(docker images -q $(docker-compose -f docker-compose.prod.yml config | grep image: | awk '{print $2}'))
         docker tag $IMAGE_ID ${{ secrets.DOCKER_USERNAME }}/vite-app:latest
         docker push ${{ secrets.DOCKER_USERNAME }}/vite-app:latest
+
+    - name: Stop and remove production services
+      run: docker-compose -f docker-compose.prod.yml down
