@@ -10,4 +10,3 @@ services:
     environment:
       - NODE_ENV=production
       - VITE_API_URL=http://localhost:3000/
-    command: npm run serve
