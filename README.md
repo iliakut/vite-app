@@ -1,11 +1,11 @@
 # React + TypeScript + Vite + Docker experimentation app
-Docker is just for fun
+Docker is just for fun and to leasn how to use it with github actions
  
-Run app:
+Run app locally (runs on http://localhost:3000/vite-app/):
 ```
-docker-compose up --build
+docker-compose -f docker-compose.dev.yml up
 ```
 Stop app: 
 ```
-docker-compose down
+docker-compose -f docker-compose.dev.yml down
 ```
